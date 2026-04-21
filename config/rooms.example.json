@@ -1,0 +1,17 @@
+[
+  {
+    "id": "room1",
+    "displayName": "Room 1",
+    "calendarId": "c_calendarId1@resource.calendar.google.com"
+  },
+  {
+    "id": "room2",
+    "displayName": "Room 2",
+    "calendarId": "c_calendarId2@resource.calendar.google.com"
+  },
+  {
+    "id": "room3",
+    "displayName": "Room 3",
+    "calendarId": "c_calendarId3@resource.calendar.google.com"
+  }
+]
