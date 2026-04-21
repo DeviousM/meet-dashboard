@@ -32,6 +32,7 @@ Designate one Workspace user account that will own the OAuth grant. It needs
 **read access to every room calendar** the kiosk fleet displays.
 
 For each Calendar Resource (Admin console → Buildings & resources):
+
 - Either rely on the org-default sharing setting that exposes event details
   to all members, or
 - Open the resource calendar in Calendar UI as an admin → Settings → "Share
@@ -45,7 +46,7 @@ Create a `.env` file in the project root with:
 GOOGLE_CLIENT_ID=<from step 1>
 GOOGLE_CLIENT_SECRET=<from step 1>
 GOOGLE_REFRESH_TOKEN=<filled in by step 4>
-PORT=8787
+PORT=8337
 
 # Optional: nature/landscape background photo from Unsplash.
 # Sign up at https://unsplash.com/developers, create an app, copy the
@@ -78,6 +79,7 @@ cp config/rooms.example.json config/rooms.json
 ```
 
 Each entry needs:
+
 - `id` — short slug, used in URLs (`/?roomId=aurora`)
 - `displayName` — shown on the kiosk
 - `calendarId` — the resource calendar ID, e.g.
@@ -110,7 +112,7 @@ is tree-shaken out of any non-mock build, so it never ships to production.
 npm run dev
 ```
 
-This runs the backend on `http://localhost:8787` and the rsbuild dev server on
+This runs the backend on `http://localhost:8337` and the rsbuild dev server on
 `http://localhost:3000` with `/api` proxied to the backend.
 
 Open `http://localhost:3000/?roomId=aurora` (substitute one of your room ids).
@@ -123,7 +125,7 @@ npm run start
 ```
 
 The backend serves the built bundle from `dist/web/` and the API from the same
-port. Open `http://<host>:8787/?roomId=aurora`.
+port. Open `http://<host>:8337/?roomId=aurora`.
 
 ### Production (Docker Compose)
 
@@ -134,7 +136,7 @@ docker compose up -d
 ```
 
 This builds a multi-stage image (build deps stay out of the final layer),
-starts the server on port `8787` (configurable via `PORT` in `.env`), and
+starts the server on port `8337` (configurable via `PORT` in `.env`), and
 mounts `rooms.json` read-only. The container restarts automatically unless
 you explicitly stop it.
 
@@ -150,7 +152,7 @@ Point fullscreen Chrome at the URL with a per-device room id:
 
 ```
 chromium-browser --kiosk --noerrdialogs --disable-infobars \
-  http://meet-dashboard.local:8787/?roomId=aurora
+  http://meet-dashboard.local:8337/?roomId=aurora
 ```
 
 ## Testing
