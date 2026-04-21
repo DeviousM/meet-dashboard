@@ -1,0 +1,44 @@
+{
+  "name": "meet-dashboard-app",
+  "version": "0.1.0",
+  "description": "Google Meet Dashboard app meant to run as a kiosk app on any device. Free your Google Meet!",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "auth": "tsx scripts/obtain-refresh-token.ts",
+    "dev:server": "tsx watch src/server/index.ts",
+    "dev:web": "rsbuild dev",
+    "dev": "concurrently -n server,web -c blue,magenta \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:mock": "MOCK_MODE=1 rsbuild dev",
+    "build:web": "rsbuild build",
+    "build:server": "tsc -p tsconfig.server.json",
+    "build": "npm run build:web && npm run build:server",
+    "start": "node dist/server/server/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.server.json --noEmit && tsc -p tsconfig.scripts.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@fastify/static": "^7.0.4",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "googleapis": "^144.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^1.0.19",
+    "@rsbuild/plugin-react": "^1.0.6",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "concurrently": "^9.0.1",
+    "happy-dom": "^15.7.4",
+    "open": "^10.1.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.2"
+  }
+}

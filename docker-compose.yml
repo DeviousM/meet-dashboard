@@ -1,0 +1,9 @@
+services:
+  meet-dashboard:
+    build: .
+    ports:
+      - "${PORT:-8787}:8787"
+    env_file: .env
+    volumes:
+      - ./config/rooms.json:/app/config/rooms.json:ro
+    restart: unless-stopped
