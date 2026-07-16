@@ -7,6 +7,9 @@ describe('normalizeMeetCode', () => {
     ['ABC-DEFG-HIJ', 'abc-defg-hij'],
     ['  abc-defg-hij  ', 'abc-defg-hij'],
     ['abc - defg - hij', 'abc-defg-hij'],
+    ['abcdefghij', 'abc-defg-hij'],
+    ['ABCDEFGHIJ', 'abc-defg-hij'],
+    ['abc-defghij', 'abc-defg-hij'],
   ])('accepts %j → %j', (input, expected) => {
     expect(normalizeMeetCode(input)).toBe(expected);
   });
@@ -15,7 +18,6 @@ describe('normalizeMeetCode', () => {
     '',
     'abc-defg-hi',
     'abc-defg-hijk',
-    'abcdefghij',
     'abc-defg-hi1',
     'abc/defg/hij',
     'too-many-parts-here',
